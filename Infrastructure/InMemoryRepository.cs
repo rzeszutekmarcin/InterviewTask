@@ -12,7 +12,7 @@ namespace Infrastructure
             return packets;
         }
 
-        public Task<List<Packet>> GetPacketsResult()
+        public Task<List<Packet>> GetPacketsResultAsync()
         {
             sortedPackets.Add(packets[0]);
             for (int i = 1; i < packets.Count; i++)

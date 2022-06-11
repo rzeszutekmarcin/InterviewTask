@@ -4,6 +4,6 @@
     {
         public void SendPacket(Entity packet);
         public List<Entity> GetPackets();
-        public Task<List<Entity>> GetPacketsResult();
+        public Task<List<Entity>> GetPacketsResultsAsync();
     }
 }
