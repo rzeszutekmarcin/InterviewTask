@@ -1,6 +1,6 @@
-using Xunit;
 using InterviewTask.Models;
 using System.Collections.Generic;
+using Xunit;
 
 namespace PacketsTest
 {
@@ -46,7 +46,7 @@ namespace PacketsTest
             {
                 Assert.Equal(expectedPackets[i].timestamp, sortedPackets[i].timestamp);
             }
-            
+
         }
     }
 }
