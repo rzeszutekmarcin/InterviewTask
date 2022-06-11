@@ -1,7 +1,7 @@
-﻿using InterviewTask.Models;
-using Microsoft.AspNetCore.Mvc;
-using InterviewTask.Contracts;
+﻿using InterviewTask.Contracts;
 using InterviewTask.DTO;
+using InterviewTask.Models;
+using Microsoft.AspNetCore.Mvc;
 
 namespace InterviewTask.Controllers
 {
@@ -24,14 +24,14 @@ namespace InterviewTask.Controllers
             return Ok(result);
         }
 
-        [HttpPost(Name = "Packet/{packet}")]
-        public IActionResult Post([FromBody] Packet packettest)
-        {
-            Random randomInput = new Random();
-            Packet packet = new Packet(DateTimeOffset.Now.ToUnixTimeSeconds().ToString(), randomInput.Next(0, 2));
-            repository.SendPacket(packet);
-            return Ok(packet.timestamp);
-        }
+        //[HttpPost("Packet")]
+        //public IActionResult Post([FromBody] Packet packettest)
+        //{
+        //    Random randomInput = new Random();
+        //    Packet packet = new Packet(DateTimeOffset.Now.ToUnixTimeSeconds().ToString(), randomInput.Next(0, 2));
+        //    repository.SendPacket(packet);
+        //    return Ok(packet.timestamp);
+        //}
 
         [HttpGet("GetPacketsResult")]
         public IActionResult GetPacketsResult()
@@ -42,15 +42,25 @@ namespace InterviewTask.Controllers
 
         // method to input packets from input stream 
 
-        //[HttpPost(Name = "Packet/{packet}")]
-        //public IActionResult Post([FromBody] PacketDTO packetDTO)
-        //{
-        //    Packet packet = new Packet();
-        //    packet.timestamp = packetDTO.timestamp;
-        //    packet.input = packetDTO.input;
-        //    repository.SendPacket(packet);
-        //    return Ok(packet.timestamp);
-        //}
+        [HttpPost("PacketFromDTO")]
+        public IActionResult Post([FromBody] PacketDTO packetDTO)
+        {
+            Packet packet = new Packet();
+            packet.timestamp = packetDTO.timestamp;
+            packet.input = packetDTO.input;
+            repository.SendPacket(packet);
+            return Ok(packet.timestamp);
+        }
+
+
+        // async method to test
+
+        [HttpGet("GetResult")]
+        public async Task<ActionResult<List<Packet>>> GetPacketsResultAsync()
+        {
+            var result = await repository.GetPacketsResult();
+            return result;
+        }
 
     }
 

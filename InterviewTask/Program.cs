@@ -1,6 +1,6 @@
-using InterviewTask.Models;
-using InterviewTask.Controllers;
+using Infrastructure;
 using InterviewTask.Contracts;
+using InterviewTask.Models;
 
 var builder = WebApplication.CreateBuilder(args);
 
