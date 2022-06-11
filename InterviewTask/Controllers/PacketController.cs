@@ -52,16 +52,6 @@ namespace InterviewTask.Controllers
         //    return Ok(packet.timestamp);
         //}
 
-
-        // async method to test
-
-        //[HttpGet("GetResult")]
-        //public async Task<ActionResult<List<Packet>>> GetPacketsResult()
-        //{
-        //    var result = await repository.GetPacketsResult();
-        //    return result;
-        //}
-
     }
 
 }
